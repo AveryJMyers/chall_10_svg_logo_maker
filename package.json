@@ -13,6 +13,8 @@
   "author": "Avery Myers",
   "license": "ISC",
   "dependencies": {
-    "inquirer": "^8.2.5"
+    "inquirer": "^8.2.5",
+    "inquirer-maxlength-input-prompt": "^1.0.2",
+    "jest": "^29.6.1"
   }
 }

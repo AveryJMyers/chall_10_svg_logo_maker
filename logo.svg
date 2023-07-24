@@ -1,4 +1,6 @@
-<svg width="300" height="200" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="150" cy="100" r="20" stroke-width="5" fill="black" />
-        <text x="150" y="104" text-anchor="middle" font-size="10px" fill="white">Ave</text>
+<svg width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+        <rect x="62.5" y="62.5" width="75" height="75" fill="red" />
+        <text x="100" y="105" text-anchor="middle" "font-size=40px" fill="black">
+          tes
+        </text>
       </svg>

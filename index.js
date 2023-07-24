@@ -2,13 +2,16 @@ const fs = require('fs');
 const inquirer = require('inquirer');
 const { Circle, Square, Triangle } = require('./lib/shapes.js');
 const { isColorValid } = require('./lib/validate.js');
+const MaxLengthInputPrompt = require('inquirer-maxlength-input-prompt')
+
+inquirer.registerPrompt('maxlength-input', MaxLengthInputPrompt)
 
 
 
 
 const questions = [
     'Which letters do you want? (Max 3)', // 0, text
-    'What background color would you like? (Type a color or a hexadecimal number)',  // 1, bg color
+    'What colors do you want the letters to be?)',  // 1, shape color
     'Which shape would you like to use?', // 2, shape, ~choices
     'What color would you like your shape to be? (Type a color or a hexadecimal number)', // 3, shape color
 ];
@@ -17,8 +20,10 @@ const questions = [
 function init(){
     inquirer.prompt([
         {
+            type: 'maxlength-input',
             message: questions[0],
             name: 'letters',
+            maxLength: 3,
         },
         {
           message: questions[1],
