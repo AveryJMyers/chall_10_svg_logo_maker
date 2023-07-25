@@ -7,6 +7,8 @@ const MaxLengthInputPrompt = require('inquirer-maxlength-input-prompt')
 inquirer.registerPrompt('maxlength-input', MaxLengthInputPrompt)
 
 
+
+
 const questions = [
     'Which letters do you want? (Max 3)', // 0, text
     'What colors do you want the letters to be?',  // 1, font color
@@ -15,9 +17,15 @@ const questions = [
 ];
 
 
+function renderText(letters, bgColor) {
+  const svgText = `<text x="150" y="140" text-anchor="middle" font-size="40px" fill="${bgColor}">
+    ${letters} </text>`;
+  fs.writeFileSync("logo.svg", svgText);
+}
+
+
 function init(){
-    inquirer
-    .prompt([
+    inquirer.prompt([
         {
             type: 'maxlength-input',
             message: questions[0],
@@ -50,47 +58,36 @@ function init(){
               return 'Please enter a valid color (hexadecimal or color name).';
           },
         },
-    ]).then((answers) => {
-        const { letters, fontColor, shape, shapeColor } = answers;
-
-        let chosenShape;
-        switch (shape) {
-            case 'circle':
-                chosenShape = new Circle(shapeColor);
-                break;
-            case 'square':
-                chosenShape = new Square(shapeColor);
-                break;
-            case 'triangle':
-                chosenShape = new Triangle(shapeColor);
-                break;
-            default:
-                console.log('Something went wrong.');
-                return;
+    ]).then(({ letters, fontColor, shape, shapeColor }) => {
+      let chosenShape;
+    
+      if (shape === "circle") {
+        chosenShape = new Circle();
+      } else if (shape === "square") {
+        chosenShape = new Square();
+      } else if (shape === "triangle") {
+        chosenShape = new Triangle();
+      } else {
+        throw new Error("Invalid shape type!");
+      }
+    
+      chosenShape.setColor(shapeColor);
+      chosenShape.setLetters(letters);
+      chosenShape.setTextColor(fontColor); // Set the fontColor property on the Triangle object
+    
+      const svgString = chosenShape.render();
+      renderText(letters, fontColor);
+      fs.appendFileSync("logo.svg", svgString, (err) => {
+        if (err) {
+          console.error("Error writing SVG file:", err);
+        } else {
+          console.log("Generated logo.svg");
         }
-
-        chosenShape.setColor(shapeColor);
-
-        const svgContent = `<svg width="300" height="200" xmlns="http://www.w3.org/2000/svg">
-        ${chosenShape.render()}
-        <text x="138" y="130" fill="${fontColor}">${letters}</text>
-      </svg>`;
-
-      fs.writeFile('logo.svg', svgContent, (err) => {
-        if (err) throw err;
-        console.log('Generated logo.svg');
       });
     })
     .catch((error) => {
-      console.error('Error occurred:', error);
+      console.log(error);
     });
 }
-
-
-// Call the init function to start the interaction with the user and generate the logo
+  
 init();
-
-
-
-
-

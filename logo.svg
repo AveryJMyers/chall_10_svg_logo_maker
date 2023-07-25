@@ -1,6 +1,4 @@
-<svg width="200" height="200" xmlns="http://www.w3.org/2000/svg">
-        <rect x="62.5" y="62.5" width="75" height="75" fill="red" />
-        <text x="100" y="105" text-anchor="middle" "font-size=40px" fill="black">
-          tes
-        </text>
+<svg width="300" height="200" xmlns="http://www.w3.org/2000/svg">
+        <svg><polygon points="150, 18 244, 182 56, 182" fill="undefined" /></svg>
+        <text x="138" y="130" fill="red">ave</text>
       </svg>
