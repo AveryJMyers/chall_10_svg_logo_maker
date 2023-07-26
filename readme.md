@@ -28,6 +28,7 @@ This project is a command-line tool that allows users to create custonm logos wi
 2. Answer the questions about your desired logo
 3. Review file in 'logo.svg'
 
+example: https://drive.google.com/file/d/1y4gcE8q13dXx5PwFe2XxVdiCqe0E8rGe/view
 
 ## Credits
 Jest Testing
