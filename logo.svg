@@ -1,4 +1,4 @@
 <svg width="300" height="200" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="150" cy="125" r="50" fill="White" />
-        <text x="138" y="130" fill="BLUE">TES</text>
+        <polygon points="150, 18 244, 182 56, 182" fill="#2FFFFF" />
+        <text x="138" y="130" fill="RED">TST</text>
       </svg>
