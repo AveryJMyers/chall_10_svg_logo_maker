@@ -1,6 +1,6 @@
 const fs = require('fs');
 const inquirer = require('inquirer');
-const {  Shape, Triangle } = require('./lib/shapes.js');
+const {   Circle, Square, Triangle } = require('./lib/shapes.js');
 const { isColorValid } = require('./lib/validate.js');
 const MaxLengthInputPrompt = require('inquirer-maxlength-input-prompt')
 
@@ -70,6 +70,7 @@ function init(){
         }
 
         chosenShape.setColor(shapeColor);
+       
 
         const svgContent = `<svg width="300" height="200" xmlns="http://www.w3.org/2000/svg">
         ${chosenShape.render()}
@@ -87,7 +88,7 @@ function init(){
 }
 
 
-// Call the init function to start the interaction with the user and generate the logo
+
 init();
 
 
